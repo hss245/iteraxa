@@ -2565,7 +2565,7 @@ textarea.reply {
 .sb-credit {
   flex-basis: 100%;
   text-align: right;
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 600;
   /* Outlook blue, legible on light, dark and glass backgrounds. */
   color: #0f6cbd;

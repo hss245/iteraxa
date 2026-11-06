@@ -204,6 +204,6 @@ The preview accepts `theme`, `accent`, `view` (`new`, `settings`, `onboarding` o
 
 ## License
 
-MIT, see [LICENSE](LICENSE). Made by Harpreet Singh.
+MIT, see [LICENSE](LICENSE). Initiative by Harpreet Singh.
 
 Iteraxa is an independent project and isn't affiliated with Anthropic, OpenAI or Cursor. Claude, Codex and Cursor are trademarks of their owners.
