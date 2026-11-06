@@ -1,0 +1,6 @@
+intent: Make the project tests exit 0
+agent: claude
+budget_usd: 2
+max_turns: 8
+checks[1|]{id|cmd}:
+  tests|python3 check.py

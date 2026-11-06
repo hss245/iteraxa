@@ -1,0 +1,128 @@
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Ubuntu", "Cantarell", system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Ubuntu", system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Ubuntu Mono", Menlo, monospace;
+
+  --r-xs: 6px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur: 180ms;
+
+  --claude: #d97757;
+  --codex: #10a37f;
+  --cursor: #27272a;
+
+  --sidebar-w: 264px;
+}
+
+[data-theme="dark"] {
+  --cursor: #d4d4d8;
+}
+
+/* Light */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --bg:
+    radial-gradient(1200px 700px at 85% -10%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 60%),
+    radial-gradient(900px 600px at -10% 110%, rgba(56, 189, 248, 0.10), transparent 60%),
+    linear-gradient(165deg, #f4f6fb 0%, #eceff6 50%, #eef1f7 100%);
+  --sidebar: rgba(244, 246, 251, 0.0);
+  --sidebar-solid: rgba(236, 239, 246, 0.72);
+  --main: rgba(255, 255, 255, 0.74);
+  --main-solid: rgba(255, 255, 255, 0.86);
+  --card: rgba(255, 255, 255, 0.78);
+  --card-hover: rgba(255, 255, 255, 0.95);
+  --sunken: rgba(15, 23, 42, 0.035);
+  --field: rgba(255, 255, 255, 0.9);
+  --sel: rgba(15, 23, 42, 0.06);
+  --hover: rgba(15, 23, 42, 0.04);
+  --hairline: rgba(15, 23, 42, 0.08);
+  --hairline-strong: rgba(15, 23, 42, 0.13);
+  --highlight: rgba(255, 255, 255, 0.85);
+
+  --text: #0f172a;
+  --text-2: #475569;
+  --text-3: #8592a8;
+  --on-accent: #ffffff;
+
+  --ok: #15803d;
+  --ok-soft: rgba(22, 163, 74, 0.12);
+  --bad: #c62828;
+  --bad-soft: rgba(220, 38, 38, 0.10);
+  --warn: #b45309;
+  --warn-soft: rgba(217, 119, 6, 0.12);
+
+  --shadow-card: 0 1px 0 var(--highlight) inset, 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 30px -18px rgba(15, 23, 42, 0.18);
+  --shadow-main: 0 0 0 0.5px rgba(15, 23, 42, 0.06), 0 12px 40px -20px rgba(15, 23, 42, 0.22);
+  --shadow-pop: 0 0 0 0.5px rgba(15, 23, 42, 0.10), 0 24px 60px -18px rgba(15, 23, 42, 0.35);
+  --scrim: rgba(241, 244, 250, 0.55);
+}
+
+/* Dark */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:
+    radial-gradient(1100px 700px at 90% -10%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%),
+    radial-gradient(900px 600px at -10% 110%, rgba(45, 212, 191, 0.07), transparent 60%),
+    linear-gradient(165deg, #0c0f16 0%, #0e121a 50%, #0b0e14 100%);
+  --sidebar: rgba(14, 17, 24, 0.0);
+  --sidebar-solid: rgba(17, 20, 28, 0.6);
+  --main: rgba(22, 25, 33, 0.78);
+  --main-solid: rgba(20, 23, 31, 0.92);
+  --card: rgba(34, 38, 49, 0.62);
+  --card-hover: rgba(40, 45, 58, 0.8);
+  --sunken: rgba(255, 255, 255, 0.035);
+  --field: rgba(255, 255, 255, 0.05);
+  --sel: rgba(255, 255, 255, 0.08);
+  --hover: rgba(255, 255, 255, 0.05);
+  --hairline: rgba(255, 255, 255, 0.07);
+  --hairline-strong: rgba(255, 255, 255, 0.12);
+  --highlight: rgba(255, 255, 255, 0.05);
+
+  --text: #e8ecf4;
+  --text-2: #a7b1c2;
+  --text-3: #6f7b90;
+  --on-accent: #ffffff;
+
+  --ok: #4ade80;
+  --ok-soft: rgba(74, 222, 128, 0.12);
+  --bad: #f87171;
+  --bad-soft: rgba(248, 113, 113, 0.12);
+  --warn: #fbbf24;
+  --warn-soft: rgba(251, 191, 36, 0.12);
+
+  --shadow-card: 0 1px 0 var(--highlight) inset, 0 12px 32px -18px rgba(0, 0, 0, 0.7);
+  --shadow-main: 0 0 0 0.5px rgba(255, 255, 255, 0.06), 0 18px 50px -24px rgba(0, 0, 0, 0.8);
+  --shadow-pop: 0 0 0 0.5px rgba(255, 255, 255, 0.10), 0 28px 70px -20px rgba(0, 0, 0, 0.85);
+  --scrim: rgba(8, 10, 15, 0.5);
+}
+
+/* Accents */
+[data-accent="indigo"] { --accent: #5b5bd6; }
+[data-accent="teal"] { --accent: #0d8f84; }
+[data-accent="violet"] { --accent: #7c4ddb; }
+[data-accent="rose"] { --accent: #d6336c; }
+[data-accent="amber"] { --accent: #c76a05; }
+
+[data-theme="dark"][data-accent="indigo"] { --accent: #8b8cfa; }
+[data-theme="dark"][data-accent="teal"] { --accent: #2dd4bf; }
+[data-theme="dark"][data-accent="violet"] { --accent: #a78bfa; }
+[data-theme="dark"][data-accent="rose"] { --accent: #fb7185; }
+[data-theme="dark"][data-accent="amber"] { --accent: #fbbf24; }
+
+:root {
+  --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
+  --accent-softer: color-mix(in srgb, var(--accent) 7%, transparent);
+  --accent-ring: color-mix(in srgb, var(--accent) 32%, transparent);
+  --accent-hover: color-mix(in srgb, var(--accent) 88%, #000);
+}
+
+[data-theme="dark"][data-accent="teal"],
+[data-theme="dark"][data-accent="amber"] {
+  --on-accent: #0b0e14;
+}

@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  go:
+    name: Daemon (Go, ${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: gofmt
+        run: |
+          unformatted=$(gofmt -l .)
+          if [ -n "$unformatted" ]; then echo "$unformatted"; exit 1; fi
+      - run: go vet ./...
+      # Includes the contract tests that keep the loop, the daemon and the window in step.
+      - run: go test ./...
+
+  python:
+    name: Goal loop (Python ${{ matrix.python }}, ${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ["3.10", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m iteraxa.selfcheck
+        env:
+          PYTHONPATH: python
+
+  rust:
+    name: App and codec (Rust, ${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tauri build packages
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev build-essential libxdo-dev libssl-dev \
+            libayatana-appindicator3-dev librsvg2-dev
+      # tauri-build checks that the sidecars exist; the tests do not run them.
+      - name: Placeholder sidecars
+        run: |
+          triple=$(rustc -vV | sed -n 's/^host: //p')
+          mkdir -p app/binaries
+          touch "app/binaries/ixd-$triple" "app/binaries/ixpack-$triple"
+      - run: cargo fmt --check -p ixpack
+      - run: cargo test --workspace --locked
+
+  ui:
+    name: Window (JavaScript syntax)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Parse every module
+        run: for f in app/ui/js/*.js app/ui/js/views/*.js; do node --input-type=module --check < "$f" || exit 1; done

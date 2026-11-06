@@ -1,0 +1,6 @@
+intent: Write findings.txt with the measured result
+agent: codex
+budget_usd: 1.5
+max_turns: 6
+checks[1|]{id|cmd}:
+  findings|test -s findings.txt

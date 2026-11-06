@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "app": {
+    "macOSPrivateApi": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Iteraxa",
+        "width": 1200,
+        "height": 780,
+        "minWidth": 980,
+        "minHeight": 640,
+        "center": true,
+        "transparent": true,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "trafficLightPosition": { "x": 18, "y": 24 },
+        "windowEffects": {
+          "effects": ["liquidGlassRegular", "sidebar"],
+          "state": "followsWindowActiveState"
+        }
+      }
+    ]
+  },
+  "bundle": {
+    "macOS": {
+      "minimumSystemVersion": "11.0"
+    }
+  }
+}
