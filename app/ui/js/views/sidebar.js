@@ -61,7 +61,7 @@ export function sidebarHTML() {
       <span class="daemon" title="${esc(state.info.data_dir)}"><span class="dot ${state.info.daemon ? 'ok' : 'bad'}"></span><span>${state.info.daemon ? 'Service running' : 'Service offline'}</span></span>
       <div class="seg mini" role="group" aria-label="Theme">${THEMES.map(([t, ic, l]) => `<button aria-pressed="${state.settings.theme === t}" data-act="theme" data-v="${t}" title="${l}" aria-label="${l}">${icon(ic, 14)}</button>`).join('')}</div>
       <button class="btn ghost sm icon" data-act="settings" title="Settings (${mod()},)" aria-label="Settings">${icon('settings', 16)}</button>
-      <div class="sb-credit">Initiative by Harpreet Singh</div>
+      <div class="sb-credit">Initiative by Harpreet</div>
     </div>`;
 }
 

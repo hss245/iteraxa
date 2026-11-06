@@ -101,7 +101,7 @@ const BODY = {
       ${row('Data folder', `<span class="mono">${esc(shortPath(state.info.data_dir))}</span>`, `<button class="btn sm" data-act="reveal" data-path="${esc(state.info.data_dir)}">${icon('folder', 13)}Show</button>`)}
     </div>
     <div class="faint" style="font-size:12px">Built with Tauri, Go, Rust and Python. Goals and ledgers use TOON to keep prompts small.</div>
-    <div class="faint" style="font-size:10px">Initiative by Harpreet Singh</div>`,
+    <div class="faint" style="font-size:10px">Initiative by Harpreet</div>`,
 };
 
 export function settingsHTML() {
